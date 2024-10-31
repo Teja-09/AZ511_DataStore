@@ -34,15 +34,12 @@ CREATE TABLE weather_stations (
     last_updated DATETIME,
     FOREIGN KEY (camera_id) REFERENCES cameras(id)
 );
-drop table weather_stations;
 select * from weather_stations;
+
 -- Indexing foreign key optimizes joins
 CREATE INDEX idx_camera_views_camera_id ON camera_views(camera_id);
 CREATE INDEX idx_weather_stations_camera_id ON weather_stations(camera_id);
 
-select * from cameras;
-select * from camera_views;
-select * from weather_stations;
 
 CREATE TABLE weather_stations_archive (
 	archive_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -60,5 +57,5 @@ CREATE TABLE weather_stations_archive (
     last_updated DATETIME,
 	FOREIGN KEY (original_id) REFERENCES weather_stations(id)
 );
-drop table weather_stations_archive;
+-- drop table weather_stations_archive;
 select * from weather_stations_archive;
